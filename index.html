@@ -114,7 +114,7 @@
 
             fish1.y = wobble1;
             fish2.y = wobble2;
-            fish3.y = wobble3;
+            //fish3.y = wobble3;
 
             setTimeout(animationLoop, 1000/30);
         }
@@ -167,7 +167,7 @@
         //Click listener
         fish3.on("click",function (e) {
             //alert("clicked!");
-            fish3.log(e);
+            console.log(e);
         });
         //Hover listeners
         fish3.on("pointerover",function (e) {
@@ -179,17 +179,20 @@
 
         //Dragable event listeners
         fish3.dragging = false;
-            fish3.on("pointerdown",function (e) {
-                fish3.dragging = true;
+        fish3.on("pointerdown",function (e) {
+            fish3.dragging = true;
         });
-            fish3.on("pointermove",function (e) {
+        fish3.on("pointermove",function (e) {
             if(fish3.dragging) {
-                console.log(e);
-                fish3.x = e.data.global.x - fish3.width/2;
-                fish3.y = e.data.global.y - fish3.height/2;
+                //console.log(e);
+                fish3.x = e.data.global.x - my_container.getGlobalPosition().x;// - fish3.width/2;
+                fish3.y = e.data.global.y - my_container.getGlobalPosition().y;// fish3.height/2;
             }
         });
         fish3.on("pointerup",function (e) {
+            fish3.dragging = false;
+        });
+        fish3.on("pointerupoutside",function (e) {
             fish3.dragging = false;
         });
           
@@ -250,6 +253,8 @@
         if (newX < 0 ) newX = 0;
 
         ourButton.value = newX/theTrack.width;
+
+        fish2.scale.set(ourButton.value);
 
         theSlide.x = newX;
 
