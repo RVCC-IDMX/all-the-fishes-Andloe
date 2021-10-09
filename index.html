@@ -27,7 +27,7 @@
             fish1.width = 200;
             fish1.height = 200;
             fish1.y = 0;
-            fish1.x = 50;
+            fish1.x = 0;
             fish1.anchor.set(.5);
 
         //Add it to the stage
@@ -46,7 +46,7 @@
         //My third sprite 
         let fish3 = PIXI.Sprite.from("img/snaperfish.png");
             fish3.y = 0;
-            fish3.x = 280;
+            fish3.x = 250;
             fish3.anchor.set(.5);
             fish3.scale.set(.20);
             fish3.interactive = true;
@@ -366,12 +366,12 @@
             
             async function idleSwim1() {
                 await Animate.to(fish1,{
-                    x:100,y:50,
+                    x:0,y:80,
                     duration:2000,
                     easing:Animate.easeInOut
                 });
                 await Animate.to(fish1,{
-                    x:5,y:5,
+                    x:0,y:0,
                     duration:2000,
                     easing:Animate.easeInOut
                 });
@@ -381,12 +381,12 @@
 
             async function idleSwim2() {
                 await Animate.to(fish3,{
-                    x:200,y:30,
+                    x:250,y:40,
                     duration:1200,
                     easing:Animate.easeInOut
                 });
                 await Animate.to(fish3,{
-                    x:200,y:0,
+                    x:250,y:0,
                     duration:1200,
                     easing:Animate.easeInOut
                 });
@@ -395,19 +395,19 @@
             idleSwim2();
 
             async function idleSwim3() {
-                await Animate.to(fish3,{
-                    x:300,y:30,
+                await Animate.to(fish2,{
+                    x:450,y:10,
                     duration:1200,
                     easing:Animate.easeInOut
                 });
-                await Animate.to(fish3,{
-                    x:200,y:0,
+                await Animate.to(fish2,{
+                    x:450,y:0,
                     duration:1200,
                     easing:Animate.easeInOut
                 });
-                idleSwim2();
+                idleSwim3();
             }
-            idleSwim2();
+            idleSwim3();
 
 
     /*
