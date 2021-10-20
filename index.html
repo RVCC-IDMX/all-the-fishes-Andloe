@@ -102,6 +102,7 @@
             my_container.addChild(fish3);
             my_container.x = 100;
             my_container.y = 240;
+            my_container.interactive = true;
 
         app.stage.addChild(my_container);
 
@@ -431,7 +432,32 @@
         idleSwim2();
         }
     
-    Animate.loop();
+    //Animate.loop();
+
+    async function swimUp() {
+        await Animate.to(fish3, {
+            x: 250,
+            y: -150,
+            duration: 1200,
+            easing: Animate.easeInOut,
+          });
+          idleSwim2();
+    }
+    fish3.on("click",swimUp);
+
+    async function swimPointer(e) { console.log(e);
+
+        let newX = e.offsetX - my_container.getGlobalPosition().x;
+        let newY = e.offsetY - my_container.getGlobalPosition().y;
+
+        await Animate.to(fish2, {
+            x:newX, y:newY,
+            duration: 1200,
+            easing: Animate.easeInOut,
+        });
+        idleSwim3();
+    }
+    app.view.addEventListener("click",swimPointer);
 
     /*
 
