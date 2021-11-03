@@ -106,6 +106,25 @@
 
         app.stage.addChild(my_container);
 
+        // Stage 1
+        let scene1 = new PIXI.Container();
+
+    //Using our button object let's create a "next" button.
+    let nextButton = UI.Button(0,0,"Next >");
+    
+    //Let's place it in the bottom right-hand corner of the screen (regardless of size)
+    nextButton.x = app.view.width  - nextButton.width;
+    nextButton.y = app.view.height - nextButton.height;
+
+    //And place it into the scene
+    scene1.addChild(nextButton);
+
+    //And let's add some text to tell us which scene we're on
+    let scene1Text = new PIXI.Text("Scene 1",{fill:0xFFFFFF});
+
+    //And place it into the scene
+    scene1.addChild(scene1Text); 
+
         //Animation loop
         // function animationLoop() {
 
